@@ -1,0 +1,15 @@
+C:\Users\rekuts\source\repos\TwoPassSorting\TwoPassSorting\bin\Debug\SortModels.exe.config
+C:\Users\rekuts\source\repos\TwoPassSorting\TwoPassSorting\bin\Debug\SortModels.exe
+C:\Users\rekuts\source\repos\TwoPassSorting\TwoPassSorting\bin\Debug\SortModels.pdb
+C:\Users\rekuts\source\repos\TwoPassSorting\TwoPassSorting\obj\Debug\SortModels.csproj.AssemblyReference.cache
+C:\Users\rekuts\source\repos\TwoPassSorting\TwoPassSorting\obj\Debug\MainWindow.g.cs
+C:\Users\rekuts\source\repos\TwoPassSorting\TwoPassSorting\obj\Debug\App.g.cs
+C:\Users\rekuts\source\repos\TwoPassSorting\TwoPassSorting\obj\Debug\SortModels_MarkupCompile.cache
+C:\Users\rekuts\source\repos\TwoPassSorting\TwoPassSorting\obj\Debug\SortModels_MarkupCompile.lref
+C:\Users\rekuts\source\repos\TwoPassSorting\TwoPassSorting\obj\Debug\MainWindow.baml
+C:\Users\rekuts\source\repos\TwoPassSorting\TwoPassSorting\obj\Debug\SortModels.g.resources
+C:\Users\rekuts\source\repos\TwoPassSorting\TwoPassSorting\obj\Debug\SortModels.Properties.Resources.resources
+C:\Users\rekuts\source\repos\TwoPassSorting\TwoPassSorting\obj\Debug\SortModels.csproj.GenerateResource.cache
+C:\Users\rekuts\source\repos\TwoPassSorting\TwoPassSorting\obj\Debug\SortModels.csproj.CoreCompileInputs.cache
+C:\Users\rekuts\source\repos\TwoPassSorting\TwoPassSorting\obj\Debug\SortModels.exe
+C:\Users\rekuts\source\repos\TwoPassSorting\TwoPassSorting\obj\Debug\SortModels.pdb
