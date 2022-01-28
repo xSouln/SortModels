@@ -61,6 +61,7 @@
       <SubType>Designer</SubType>
     </ApplicationDefinition>
     <Compile Include="NotifyPropertyChanged.cs" />
+    <Compile Include="SortingMethods\SortingBubble.cs" />
     <Compile Include="SortingMethods\SortingToPass.cs" />
     <Compile Include="SortingMethods\SortingBase.cs" />
     <Page Include="MainWindow.xaml">

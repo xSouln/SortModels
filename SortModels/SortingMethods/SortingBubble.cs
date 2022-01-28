@@ -8,61 +8,49 @@ using System.Windows.Threading;
 
 namespace SortModels
 {
-    public class SortingToPass : SortingBase
+    public class SortingBubble : SortingBase
     {
-        public double[] Sequence;
-        public byte[] Heap;
-
-        public SortingToPass()
-        {
-            Name = "To Pass";
-        }
+        public int[] Sequence;
+        public int[] Heap;
 
         public override void Sort(object data)
         {
-            byte[] array = data as byte[];
+            int[] array = data as int[];
+            int[] clone;
 
             if (array != null && array.Length > 0)
             {
                 Stopwatch timer = new Stopwatch();
                 List<double> vector = new List<double>();
+                clone = new int[array.Length];
 
-                timer.Start();
-                //массив количества входимостей
-                int[] entry = new int[0xff];
-
-                foreach (byte element in array)
+                for (int i = 0; i < array.Length; i++)
                 {
-                    entry[element]++;
+                    clone[i] = array[i];
                 }
 
-                int i = 0;
-                int j = 0;
-                while (i < array.Length)
+                timer.Start();
+
+                int temp;
+                for (int write = 0; write < array.Length; write++)
                 {
-                    if (entry[j] > 0)
+                    for (int sort = 0; sort < array.Length - 1; sort++)
                     {
-                        vector.Add(j);
-                        entry[j]--;
-                        i++;
-                    }
-                    else
-                    {
-                        j++;
+                        if (array[sort] > array[sort + 1])
+                        {
+                            temp = array[sort + 1];
+                            array[sort + 1] = array[sort];
+                            array[sort] = temp;
+                        }
                     }
                 }
 
                 timer.Stop();
                 SortingTime = (int)timer.ElapsedTicks;
 
-                this.Heap = array;
-                this.Sequence = vector.ToArray();
+                this.Heap = clone;
+                this.Sequence = array;
             }
-        }
-
-        public override void Sort()
-        {
-            Sort(Heap);
         }
 
         public override void UpdateTemplate(DispatcherObject context)
@@ -91,14 +79,19 @@ namespace SortModels
             });
         }
 
+        public override void Sort()
+        {
+            Sort(Heap);
+        }
+
         public override void Generate(int size)
         {
-            List<byte> vector = new List<byte>();
+            List<int> vector = new List<int>();
             Random random = new Random();
 
             while (size > 0)
             {
-                vector.Add((byte)random.Next(0, 0xff));
+                vector.Add(random.Next(-1000, 1000));
                 size--;
             }
 

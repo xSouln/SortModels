@@ -126,12 +126,17 @@ namespace SortModels
             }
         }
 
-        public virtual void UpdateCharts(DispatcherObject context)
+        public virtual void UpdateTemplate(DispatcherObject context)
         {
 
         }
 
         public virtual void Sort(object data)// where TElement : unmanaged, IConvertible
+        {
+
+        }
+
+        public virtual void Sort()
         {
 
         }
