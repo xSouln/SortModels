@@ -4,14 +4,22 @@ using System.Diagnostics;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows;
+using System.Windows.Controls;
+using System.Windows.Forms.Integration;
 using System.Windows.Threading;
 
 namespace SortModels
 {
-    public class SortingBubble : SortingBase
+    public class SortingBubble : SortingBaseCharting
     {
         public int[] Sequence;
         public int[] Heap;
+
+        public SortingBubble()
+        {
+            Name.Value = "Bubble";
+        }
 
         public override void Sort(object data)
         {
@@ -32,21 +40,21 @@ namespace SortModels
                 timer.Start();
 
                 int temp;
-                for (int write = 0; write < array.Length; write++)
+                for (int i = 0; i < array.Length; i++)
                 {
-                    for (int sort = 0; sort < array.Length - 1; sort++)
+                    for (int step = 0; step < array.Length - 1; step++)
                     {
-                        if (array[sort] > array[sort + 1])
+                        if (array[step] > array[step + 1])
                         {
-                            temp = array[sort + 1];
-                            array[sort + 1] = array[sort];
-                            array[sort] = temp;
+                            temp = array[step + 1];
+                            array[step + 1] = array[step];
+                            array[step] = temp;
                         }
                     }
                 }
 
                 timer.Stop();
-                SortingTime = (int)timer.ElapsedTicks;
+                SortingTime.Value = (int)timer.ElapsedTicks;
 
                 this.Heap = clone;
                 this.Sequence = array;
@@ -91,11 +99,13 @@ namespace SortModels
 
             while (size > 0)
             {
-                vector.Add(random.Next(-1000, 1000));
+                vector.Add(random.Next(0, 0xff));
                 size--;
             }
 
+            data_synchronize.WaitOne();
             Heap = vector.ToArray();
+            data_synchronize.Set();
         }
     }
 }

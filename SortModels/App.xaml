@@ -4,6 +4,12 @@
              xmlns:local="clr-namespace:SortModels"
              StartupUri="MainWindow.xaml">
     <Application.Resources>
-         
+        <ResourceDictionary>
+            <ResourceDictionary.MergedDictionaries>
+                <ResourceDictionary Source="pack://application:,,,/SortModels;component/Resources/ButtonPattern.xaml"/>
+                <ResourceDictionary Source="pack://application:,,,/SortModels;component/Resources/ListViewPattern.xaml"/>
+                <ResourceDictionary Source="pack://application:,,,/SortModels;component/Resources/MenuPattern.xaml"/>
+            </ResourceDictionary.MergedDictionaries>
+        </ResourceDictionary>
     </Application.Resources>
 </Application>

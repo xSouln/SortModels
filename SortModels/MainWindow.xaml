@@ -5,19 +5,38 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:SortModels"
         xmlns:wf="clr-namespace:System.Windows.Forms;assembly=System.Windows.Forms"
+        xmlns:template_selector="clr-namespace:SortModels.Templates"
         mc:Ignorable="d"
-        Title="MainWindow" Height="450" Width="800" Background="#FF3F3F46">
+        Title="MainWindow" Height="450" Width="815" Background="#FF3F3F46">
+    <Window.Resources>
+        <template_selector:TemplateSelector x:Key="TemplateSelector"/>
+    </Window.Resources>
     <Grid>
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="65*"/>
-            <ColumnDefinition Width="67*"/>
-            <ColumnDefinition Width="120*" MinWidth="130" MaxWidth="130"/>
+            <ColumnDefinition Width="120*" MinWidth="250" MaxWidth="250"/>
         </Grid.ColumnDefinitions>
-        <WindowsFormsHost x:Name="Host1"/>
-        <WindowsFormsHost x:Name="Host2" Grid.Column="1"/>
-        <Button x:Name="ButGenerate" Content="Generate" Grid.Column="2" Margin="5,118,5,0" VerticalAlignment="Top" Height="30" FontSize="18" Click="ButGenerate_Click"/>
-        <TextBox Grid.Column="2" VerticalContentAlignment="Center" FontSize="18" Height="30" Margin="5,83,5,0" TextWrapping="Wrap" Text="{Binding ArraySize}" VerticalAlignment="Top"/>
-        <Label x:Name="LabelSortingTime" Content="{Binding Path=SelectedValue, RelativeSource={RelativeSource AncestorType={x:Type ComboBox}}}" FontSize="18" Grid.Column="2" Margin="5,0" VerticalAlignment="Bottom" Foreground="#FFDEC316"/>
-        <ComboBox x:Name="ComboBoxSelectedSorting" ItemsSource="{Binding Sortings}" DisplayMemberPath="Name" Grid.Column="2" FontSize="18" VerticalContentAlignment="Center" Margin="5,5,5,0" VerticalAlignment="Top" Height="30" SelectionChanged="ComboBoxSelectedSorting_SelectionChanged"/>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="40"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+        <Grid x:Name="GridTemplate" Grid.Row="1" VerticalAlignment="Stretch" HorizontalAlignment="Stretch">
+
+        </Grid>
+        <Menu FontSize="18" Background="#FF3F3F46" Foreground="#FFDA7816" HorizontalAlignment="Left" Width="578">
+            <MenuItem Background="#FF494849" Header="File" Height="34" Width="110" Template="{DynamicResource MenuItemControlTemplate1}" Foreground="#FFDEC316" Margin="0,3,0,3" HorizontalAlignment="Left">
+                <MenuItem x:Name="MenuItemOpen" Template="{DynamicResource MenuItemControlTemplate2}" Header="Open" Height="34" Width="150" BorderBrush="#FF3F3F46" Background="{Binding BackgroundState}" Foreground="#FFDEC316"/>
+                <MenuItem x:Name="MenuItemSave" Template="{DynamicResource MenuItemControlTemplate2}" Header="Save" Height="34" Width="150" BorderBrush="#FF3F3F46" Background="{Binding BackgroundState}" Foreground="#FFDEC316"/>
+            </MenuItem>
+        </Menu>        
+        <Button x:Name="ButGenerate" Grid.Row="1" Content="Generate" Background="#FF494849" BorderBrush="#FF834545" Foreground="#FFDEC316" Template="{DynamicResource ButtonTemplate1}" Grid.Column="1" Margin="5,0,5,5" VerticalAlignment="Bottom" Height="40" FontSize="18" Click="ButGenerate_Click"/>
+        <ListView Grid.Row="1" ItemsSource="{Binding Propertys}" BorderBrush="#FF834545" FontSize="18" Style="{DynamicResource ListViewStyle1}" Foreground="#FFDEC316" Background="Transparent" Grid.Column="1" Margin="0,0,0,50">
+            <ListView.View>
+                <GridView>
+                    <GridViewColumn Header="Property" Width="140" DisplayMemberBinding="{Binding Name}"/>
+                    <GridViewColumn Header="Value" Width="100" CellTemplateSelector="{StaticResource TemplateSelector}"/>
+                </GridView>
+            </ListView.View>
+        </ListView>
     </Grid>
 </Window>

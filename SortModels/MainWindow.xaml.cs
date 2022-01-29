@@ -1,10 +1,12 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
+using System.Windows.Controls.Primitives;
 using System.Windows.Data;
 using System.Windows.Documents;
 using System.Windows.Input;
@@ -20,39 +22,46 @@ namespace SortModels
     /// </summary>
     public partial class MainWindow : Window
     {
-
-        private SortingBase sorting = new SortingToPass();
-        private SortingBase sorting_bubble = new SortingBubble();
-
-        public List<SortingBase> Sortings { get; set; }
-
-        public int ArraySize { get; set; } = 1000;
-
-        public SortingBase SelectedSorting { get; set; }
+        public ObservableCollection<UIProperty> Propertys { get; set; }
+        public List<SortingBase> SortingMethods { get; set; }
+        public UIProperty<int> ArraySize { get; set; } = new UIProperty<int>(new Templates.TemplateTextBox()) { Name = "Array size", Value = 100 };
+        public UIProperty<SortingBase> SortingMethod { get; set; } = new UIProperty<SortingBase>(new Templates.TemplateComboBox()) { Name = "Sorting metod" };
 
         public MainWindow()
         {
             InitializeComponent();
+
             DataContext = this;
 
-            //LabelSortingTime.DataContext = sorting;
-            ComboBoxSelectedSorting.SelectedValue = sorting;
-
-            Sortings = new List<SortingBase>
+            SortingMethods = new List<SortingBase>
             {
-                sorting,
-                sorting_bubble
+                new SortingToPass(),
+                new SortingBubble()
             };
 
-            //Loaded += WindowLoaded;
+            Propertys = new ObservableCollection<UIProperty>
+            {
+                SortingMethod,
+                ArraySize
+            };
+
+            SortingMethod.TemplateAdapter.Element.SetValue(ComboBox.DisplayMemberPathProperty, "Name.Value");
+            SortingMethod.TemplateAdapter.Element.SetValue(ComboBox.ItemsSourceProperty, SortingMethods);         
+            SortingMethod.TemplateAdapter.Element.SetBinding(ComboBox.SelectedValueProperty, new Binding { Path = new PropertyPath("Value") });
+            
+            SortingMethod.EventValueChanged = SelectedMetodChanged;
+            SortingMethod.Value = SortingMethods[0];
         }
-        /*
-        private void WindowLoaded(object sender, RoutedEventArgs e)
+
+        private void SelectedMetodChanged(UIProperty<SortingBase> arg)
         {
-            Host1.Child = sorting?.ChartHeap;
-            Host2.Child = sorting?.Chart;
+            if (arg.Value != null && arg.Value.Container != null)
+            {
+                GridTemplate.Children.Clear();
+                GridTemplate.Children.Add(arg.Value.Container);
+            }
         }
-        */
+
         public byte[] GenerateArray(int size)
         {
             List<byte> vector = new List<byte>();
@@ -69,23 +78,11 @@ namespace SortModels
 
         private void ButGenerate_Click(object sender, RoutedEventArgs e)
         {
-            //byte[] in_data = GenerateArray(ArraySize);
-
-            SelectedSorting?.Generate(ArraySize);
-            SelectedSorting?.Sort();
-            //sorting?.Sort(in_data);
-            //sorting?.Generate(in_data);
-
-            SelectedSorting.UpdateTemplate(this);
-        }
-
-        private void ComboBoxSelectedSorting_SelectionChanged(object sender, SelectionChangedEventArgs e)
-        {
-            if (ComboBoxSelectedSorting.SelectedValue != null && ComboBoxSelectedSorting.SelectedValue is SortingBase sorting)
+            if (SortingMethod.Value != null)
             {
-                Host1.Child = sorting.ChartHeap;
-                Host2.Child = sorting.Chart;
-                SelectedSorting = sorting;
+                SortingMethod.Value.Generate(ArraySize.Value);
+                SortingMethod.Value.Sort();
+                SortingMethod.Value.UpdateTemplate(this);
             }
         }
     }

@@ -4,18 +4,21 @@ using System.Diagnostics;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows;
+using System.Windows.Controls;
+using System.Windows.Forms.Integration;
 using System.Windows.Threading;
 
 namespace SortModels
 {
-    public class SortingToPass : SortingBase
+    public class SortingToPass : SortingBaseCharting
     {
         public double[] Sequence;
         public byte[] Heap;
 
         public SortingToPass()
         {
-            Name = "To Pass";
+            Name.Value = "To Pass";
         }
 
         public override void Sort(object data)
@@ -53,7 +56,7 @@ namespace SortModels
                 }
 
                 timer.Stop();
-                SortingTime = (int)timer.ElapsedTicks;
+                SortingTime.Value = (int)timer.ElapsedTicks;
 
                 this.Heap = array;
                 this.Sequence = vector.ToArray();
@@ -101,8 +104,9 @@ namespace SortModels
                 vector.Add((byte)random.Next(0, 0xff));
                 size--;
             }
-
+            data_synchronize.WaitOne();
             Heap = vector.ToArray();
+            data_synchronize.Set();
         }
     }
 }

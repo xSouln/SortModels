@@ -61,9 +61,16 @@
       <SubType>Designer</SubType>
     </ApplicationDefinition>
     <Compile Include="NotifyPropertyChanged.cs" />
+    <Compile Include="Resources\App.cs" />
     <Compile Include="SortingMethods\SortingBubble.cs" />
+    <Compile Include="SortingMethods\SortingBaseCharting.cs" />
     <Compile Include="SortingMethods\SortingToPass.cs" />
     <Compile Include="SortingMethods\SortingBase.cs" />
+    <Compile Include="TemplateAdapter.cs" />
+    <Compile Include="Templates\TemplateComboBox.cs" />
+    <Compile Include="Templates\TemplateSelector.cs" />
+    <Compile Include="Templates\TemplateTextBox.cs" />
+    <Compile Include="UIProperty.cs" />
     <Page Include="MainWindow.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
@@ -76,6 +83,18 @@
       <DependentUpon>MainWindow.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
+    <Page Include="Resources\ButtonPattern.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Resources\ListViewPattern.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Resources\MenuPattern.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Properties\AssemblyInfo.cs">
