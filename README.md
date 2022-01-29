@@ -7,3 +7,4 @@
 
 ## Программа
 - Скачать программу можно по [ссылке](https://github.com/xSouln/SortModels/raw/master/SortModels/bin/Debug/SortModels.exe)
+- [ссылка](https://downgit.github.io/#/home?url=https://github.com/xSouln/SortModels/tree/master/SortModels/bin/Debug)
