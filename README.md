@@ -6,4 +6,4 @@
 - Выбрать нужную версию программы можно нажав:
 
 ## Программа
-- Скачать программу можно по [ссылке] https://github.com/xSouln/SortModels/raw/master/SortModels/bin/Debug/SortModels.exe
+- Скачать программу можно по [ссылке](https://github.com/xSouln/SortModels/raw/master/SortModels/bin/Debug/SortModels.exe)
