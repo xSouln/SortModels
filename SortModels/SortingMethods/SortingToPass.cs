@@ -36,7 +36,7 @@ namespace SortModels
 
             if (array != null && array.Length > 0)
             {
-                int[] sequence = new int[array.Length]; //массив отсортированный
+                int[] sequence = new int[array.Length]; //выходной массив
 
                 HeapSize.Value = array.Length;
                 IsComplete.Value = false;
