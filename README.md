@@ -4,7 +4,7 @@
 3. [Описание параметров](#описание-параметров)
 
 ## Алгоритмы сортировки
-- Добавил в решение два алгоритма сортировки. Описание алгоритмов можно посмотерть посмотреть по [ссылке](https://github.com/xSouln/SortModels/blob/master/SortModels/SortingMethods/README.md).
+- Добавил в решение два алгоритма сортировки. Описание алгоритмов можно посмотерть посмотреть по [ссылке](https://github.com/xSouln/SortModels/blob/release_1/SortModels/SortingMethods/README.md).
 
 ## Программа
 - Программа предназначена для генерации массива случайных чисел и его сортировки с отображением данных в графическом виде.
@@ -12,7 +12,7 @@
 ![меню сериал порт](/SortModels/Images/Screenshot_2.png)
 Синим выделены параметры запроса для генерации, красным - свойства текущего метода сортировки. Левый график распределения точек входного массива, правый - отсортированного.
 - Возможно сохранение и открытие данных.
-- Программу можно качать по [ссылке](https://downgit.github.io/#/home?url=https://github.com/xSouln/SortModels/tree/master/SortModels/bin/Debug)
+- Программу можно качать по [ссылке](https://downgit.github.io/#/home?url=https://github.com/xSouln/SortModels/tree/release_1/SortModels/bin/Debug)
 
 ## Описание параметров
 - Soring metod - режим сортировки (изменяемый).
