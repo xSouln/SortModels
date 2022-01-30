@@ -23,7 +23,6 @@ namespace SortModels
 
         public UIProperty<string> Name { get; set; } = new UIProperty<string>(new Templates.TemplateContent()) { Name = "Metod", Value = "base" };
         public UIProperty<int> SortingTime { get; set; } = new UIProperty<int>(new Templates.TemplateContent()) { Name = "Elapsed ticks" };
-        public UIProperty<int> PercentCompleted { get; set; } = new UIProperty<int>(new Templates.TemplateContent()) { Name = "Percent completed" };
         public UIProperty<bool> IsComplete { get; set; } = new UIProperty<bool>(new Templates.TemplateContent()) { Name = "IsComplete", Value = true };
         public UIProperty<int> HeapSize { get; set; } = new UIProperty<int>(new Templates.TemplateContent()) { Name = "Heap size" };
 
@@ -43,7 +42,6 @@ namespace SortModels
                 Name,
                 SortingTime,
                 IsComplete,
-                PercentCompleted,
                 HeapSize
             };
 
