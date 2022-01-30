@@ -7,7 +7,7 @@
         xmlns:wf="clr-namespace:System.Windows.Forms;assembly=System.Windows.Forms"
         xmlns:template_selector="clr-namespace:SortModels.Templates"
         mc:Ignorable="d"
-        Title="MainWindow" Height="450" Width="815" Background="#FF3F3F46">
+        Title="MainWindow" Height="629" Width="815" Background="#FF3F3F46">
     <Window.Resources>
         <template_selector:TemplateSelector x:Key="TemplateSelector"/>
     </Window.Resources>
@@ -23,20 +23,36 @@
         <Grid x:Name="GridTemplate" Grid.Row="1" VerticalAlignment="Stretch" HorizontalAlignment="Stretch">
 
         </Grid>
+        <Grid Grid.Row="1" Grid.Column="1">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="250"/>
+                <RowDefinition Height="*"/>
+            </Grid.RowDefinitions>
+            <Button x:Name="ButGenerate" Grid.Row="1" Content="Generate" Background="#FF494849" BorderBrush="#FF834545" Foreground="#FFDEC316" Template="{DynamicResource ButtonTemplate1}" Grid.Column="1" Margin="5,0,5,5" VerticalAlignment="Bottom" Height="40" FontSize="18" Click="ButGenerate_Click"/>
+            <ListView ItemsSource="{Binding Propertys}" BorderBrush="#FF834545" FontSize="18" Style="{DynamicResource ListViewStyle1}" Foreground="#FFDEC316" Background="Transparent">
+                <ListView.View>
+                    <GridView>
+                        <GridViewColumn Header="Property" Width="140" DisplayMemberBinding="{Binding Name}"/>
+                        <GridViewColumn Header="Value" Width="100" CellTemplateSelector="{StaticResource TemplateSelector}"/>
+                    </GridView>
+                </ListView.View>
+            </ListView>
+            <ListView Grid.Row="1" DataContext="{Binding SortingMethod.Value}" ItemsSource="{Binding Propertys}" BorderBrush="#FF834545" FontSize="18" Style="{DynamicResource ListViewStyle1}" Foreground="#FFDEC316" Background="Transparent" Margin="0,0,0,50">
+                <ListView.View>
+                    <GridView>
+                        <GridViewColumn Header="Property" Width="140" DisplayMemberBinding="{Binding Name}"/>
+                        <GridViewColumn Header="Value" Width="100" CellTemplateSelector="{StaticResource TemplateSelector}"/>
+                    </GridView>
+                </ListView.View>
+            </ListView>
+
+        </Grid>
         <Menu FontSize="18" Background="#FF3F3F46" Foreground="#FFDA7816" HorizontalAlignment="Left" Width="578">
             <MenuItem Background="#FF494849" Header="File" Height="34" Width="110" Template="{DynamicResource MenuItemControlTemplate1}" Foreground="#FFDEC316" Margin="0,3,0,3" HorizontalAlignment="Left">
-                <MenuItem x:Name="MenuItemOpen" Template="{DynamicResource MenuItemControlTemplate2}" Header="Open" Height="34" Width="150" BorderBrush="#FF3F3F46" Background="{Binding BackgroundState}" Foreground="#FFDEC316"/>
-                <MenuItem x:Name="MenuItemSave" Template="{DynamicResource MenuItemControlTemplate2}" Header="Save" Height="34" Width="150" BorderBrush="#FF3F3F46" Background="{Binding BackgroundState}" Foreground="#FFDEC316"/>
+                <MenuItem x:Name="MenuItemOpen" Template="{DynamicResource MenuItemControlTemplate2}" Click="Open_Click" Header="Open" Height="34" Width="150" BorderBrush="#FF3F3F46" Background="{Binding BackgroundState}" Foreground="#FFDEC316"/>
+                <MenuItem x:Name="MenuItemSave" Template="{DynamicResource MenuItemControlTemplate2}" Click="Save_Click" Header="Save" Height="34" Width="150" BorderBrush="#FF3F3F46" Background="{Binding BackgroundState}" Foreground="#FFDEC316"/>
             </MenuItem>
-        </Menu>        
-        <Button x:Name="ButGenerate" Grid.Row="1" Content="Generate" Background="#FF494849" BorderBrush="#FF834545" Foreground="#FFDEC316" Template="{DynamicResource ButtonTemplate1}" Grid.Column="1" Margin="5,0,5,5" VerticalAlignment="Bottom" Height="40" FontSize="18" Click="ButGenerate_Click"/>
-        <ListView Grid.Row="1" ItemsSource="{Binding Propertys}" BorderBrush="#FF834545" FontSize="18" Style="{DynamicResource ListViewStyle1}" Foreground="#FFDEC316" Background="Transparent" Grid.Column="1" Margin="0,0,0,50">
-            <ListView.View>
-                <GridView>
-                    <GridViewColumn Header="Property" Width="140" DisplayMemberBinding="{Binding Name}"/>
-                    <GridViewColumn Header="Value" Width="100" CellTemplateSelector="{StaticResource TemplateSelector}"/>
-                </GridView>
-            </ListView.View>
-        </ListView>
+        </Menu>
+        <Label Grid.Column="1" Content="Label" HorizontalAlignment="Left" Margin="411,528,0,0" Grid.Row="1" VerticalAlignment="Top"/>
     </Grid>
 </Window>

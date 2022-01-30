@@ -68,6 +68,7 @@
     <Compile Include="SortingMethods\SortingBase.cs" />
     <Compile Include="TemplateAdapter.cs" />
     <Compile Include="Templates\TemplateComboBox.cs" />
+    <Compile Include="Templates\TemplateContent.cs" />
     <Compile Include="Templates\TemplateSelector.cs" />
     <Compile Include="Templates\TemplateTextBox.cs" />
     <Compile Include="UIProperty.cs" />

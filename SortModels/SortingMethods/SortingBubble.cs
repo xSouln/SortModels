@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Diagnostics;
 using System.Linq;
 using System.Text;
+using System.Threading;
 using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
@@ -13,12 +14,20 @@ namespace SortModels
 {
     public class SortingBubble : SortingBaseCharting
     {
-        public int[] Sequence;
-        public int[] Heap;
-
         public SortingBubble()
         {
             Name.Value = "Bubble";
+
+            thread.Start();
+        }
+
+        protected override void Handler()
+        {
+            while (true)
+            {
+                SortingTime.Value = (int)timer.ElapsedTicks;
+                Thread.Sleep(300);
+            }
         }
 
         public override void Sort(object data)
@@ -28,8 +37,6 @@ namespace SortModels
 
             if (array != null && array.Length > 0)
             {
-                Stopwatch timer = new Stopwatch();
-                List<double> vector = new List<double>();
                 clone = new int[array.Length];
 
                 for (int i = 0; i < array.Length; i++)
@@ -37,7 +44,9 @@ namespace SortModels
                     clone[i] = array[i];
                 }
 
-                timer.Start();
+                HeapSize.Value = array.Length;
+                IsComplete.Value = false;
+                timer.Restart();
 
                 int temp;
                 for (int i = 0; i < array.Length; i++)
@@ -54,37 +63,15 @@ namespace SortModels
                 }
 
                 timer.Stop();
-                SortingTime.Value = (int)timer.ElapsedTicks;
+                IsComplete.Value = true;
+
+                data_synchronize.WaitOne();
 
                 this.Heap = clone;
                 this.Sequence = array;
+
+                data_synchronize.Set();
             }
-        }
-
-        public override void UpdateTemplate(DispatcherObject context)
-        {
-            context.Dispatcher.Invoke(() =>
-            {
-                series.Points.Clear();
-                series_heap.Points.Clear();
-
-                if (Sequence != null)
-                {
-                    data_synchronize.WaitOne();
-
-                    foreach (double element in Sequence)
-                    {
-                        series.Points.Add(element);
-                    }
-
-                    foreach (byte element in Heap)
-                    {
-                        series_heap.Points.Add(element);
-                    }
-
-                    data_synchronize.Set();
-                }
-            });
         }
 
         public override void Sort()
