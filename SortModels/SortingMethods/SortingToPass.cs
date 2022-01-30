@@ -32,33 +32,36 @@ namespace SortModels
 
         public override void Sort(object data)
         {
-            int[] array = data as int[];
+            int[] array = data as int[]; // входной массив
 
             if (array != null && array.Length > 0)
             {
-                int[] sequence = new int[array.Length];
+                int[] sequence = new int[array.Length]; //массив отсортированный
 
                 HeapSize.Value = array.Length;
                 IsComplete.Value = false;
                 timer.Restart();
 
-                //массив количества входимостей
+                //массив количества входимостей для каждого символа размерностью 1 байт
+                //символ выступает в роли индекса массива
                 int[] entrys = new int[0xff];
 
+                //подсчет количества входимостей
                 foreach (byte element in array)
                 {
                     entrys[element]++;
                 }
 
-                int j = 0;
-                int i = 0;
+                //сортировка массива
+                int j = 0; // исполняет роль символа
+                int i = 0; // индекс сортируемого массива
                 while (i < array.Length)
                 {
-                    if (entrys[j] > 0)
+                    if (entrys[j] > 0) // проверка на входимость по j
                     {
-                        sequence[i] = j;
-                        entrys[j]--;
-                        i++;
+                        sequence[i] = j; //запись в массив символа
+                        entrys[j]--; // декремент количества входимостей
+                        i++; // инкремент индекса сортируемого массива
                     }
                     else
                     {
