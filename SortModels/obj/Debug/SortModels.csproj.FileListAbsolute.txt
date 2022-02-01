@@ -49,3 +49,8 @@ C:\Users\SLN\Desktop\SortModels\SortModels\obj\Debug\SortModels.csproj.GenerateR
 C:\Users\SLN\Desktop\SortModels\SortModels\obj\Debug\SortModels.csproj.CoreCompileInputs.cache
 C:\Users\SLN\Desktop\SortModels\SortModels\obj\Debug\SortModels.exe
 C:\Users\SLN\Desktop\SortModels\SortModels\obj\Debug\SortModels.pdb
+C:\Users\rekuts\Desktop\SortModels\SortModels\obj\Debug\GeneratedInternalTypeHelper.g.cs
+C:\Users\rekuts\Desktop\SortModels\SortModels\obj\Debug\App.baml
+C:\Users\rekuts\Desktop\SortModels\SortModels\obj\Debug\Resources\ButtonPattern.baml
+C:\Users\rekuts\Desktop\SortModels\SortModels\obj\Debug\Resources\ListViewPattern.baml
+C:\Users\rekuts\Desktop\SortModels\SortModels\obj\Debug\Resources\MenuPattern.baml
