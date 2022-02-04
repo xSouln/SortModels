@@ -47,9 +47,9 @@ namespace SortModels
             };
 
             SortingMethod.TemplateAdapter.Element.SetValue(ComboBox.DisplayMemberPathProperty, "Name.Value");
-            SortingMethod.TemplateAdapter.Element.SetValue(ComboBox.ItemsSourceProperty, SortingMethods);         
+            SortingMethod.TemplateAdapter.Element.SetValue(ComboBox.ItemsSourceProperty, SortingMethods);
             SortingMethod.TemplateAdapter.Element.SetBinding(ComboBox.SelectedValueProperty, new Binding { Path = new PropertyPath("Value") });
-            
+
             SortingMethod.EventValueChanged = SelectedMetodChanged;
             SortingMethod.Value = SortingMethods[0];
 
